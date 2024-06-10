@@ -1,0 +1,50 @@
+<!-- <p>view-verified-enquiry works!</p>
+
+it will show enquiry sent by oe after calculating cibil  score 
+and cibil status 
+it has to display it in form of table 
+and apply for loan button in front of verified status. -->
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th scope="col">Enquiry Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">Contact No</th>
+            <th scope="col">Address</th>
+            <th scope="col">Aadhar Number</th>
+            <th scope="col">PAN Number</th>
+            <th scope="col">Annual Income</th>
+             <th scope="col">Cibil Score</th>
+             <th scope="col">Cibil Status</th>
+             <th scope="col">Registration</th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of customerList">
+            <th scope="row">{{u.enquiryId}}</th>
+        
+            <td>{{u.firstName}}</td>
+            <td>{{u.lastName}}</td>
+            <td>{{u.dateOfBirth}}</td>
+            <td>{{u.emailId}}</td>
+            <td>{{u.contactNo}}</td>
+            <td>{{u.address}}</td>
+            <td>{{u.adharcard}}</td>
+            <td>{{u.pancard}}</td>
+            <td>{{u.annualIncome}}</td>
+            <td>{{u.cibilScore}}</td>
+            <td>{{u.cibilStatus}}</td>
+            <td>
+                <button *ngIf="u.cibilStatus === 'Approved'" (click)="startRegistration()">Start Registration</button>
+              </td>
+              </tr>
+              </tbody>
+              </table>
+              
+          
+     

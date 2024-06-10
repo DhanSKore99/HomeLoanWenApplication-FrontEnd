@@ -1,0 +1,47 @@
+<!-- <p>cibil-calc works!</p>
+shows enquiry sent by crm and it will calculate cibil score and 
+status as   approved , rejected , pending ,
+this cibil score and status will be sent to crm's view verified component. -->
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th scope="col">Enquiry Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">Contact No</th>
+            <th scope="col">Address</th>
+            <th scope="col">Aadhar Number</th>
+            <th scope="col">PAN Number</th>
+            <th scope="col">Annual Income</th>
+             <th scope="col">Cibil Score</th>
+             <th scope="col">Cibil Status</th>
+             <th scope="col">Calculate Cibil</th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of enq">
+            <th scope="row">{{u.enquiryId}}</th>
+        
+            <td>{{u.firstName}}</td>
+            <td>{{u.lastName}}</td>
+            <td>{{u.dateOfBirth}}</td>
+            <td>{{u.emailId}}</td>
+            <td>{{u.contactNo}}</td>
+            <td>{{u.address}}</td>
+            <td>{{u.adharcard}}</td>
+            <td>{{u.pancard}}</td>
+            <td>{{u.annualIncome}}</td>
+            <td>{{u.cibilScore}}</td>
+            <td>{{u.cibilStatus}}</td>
+            <button *ngIf="!u.isSent" (click)="CalculateCibil(u)">Send</button>
+            <span *ngIf="u.isSent">Sent</span>
+
+            </tr>
+            </tbody>
+            </table>
+
+            

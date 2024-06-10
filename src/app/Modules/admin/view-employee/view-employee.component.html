@@ -1,0 +1,19 @@
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th scope="col">Employee Name</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Password</th>
+            <th scope="col">Age</th>
+            <th scope="col">UserType</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of addEmployee">
+            <th scope="row">{{u.empname}}</th>
+            <td>{{u.username}}</td>
+            <td>{{u.password}}</td>
+            <td>{{u.age}}</td>
+            <td>{{u.usertype}}</td>
+      

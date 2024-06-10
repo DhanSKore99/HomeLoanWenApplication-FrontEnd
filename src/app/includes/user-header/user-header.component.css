@@ -1,0 +1,8 @@
+nav{
+    padding:20px;
+    box-shadow: 0px 10px 20px 0px greenyellow;
+    height: 80px;
+    width: 2200x;
+    display: flex;
+    justify-content: space-between;
+}

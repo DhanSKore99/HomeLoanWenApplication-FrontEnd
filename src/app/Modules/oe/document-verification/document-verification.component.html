@@ -1,0 +1,37 @@
+
+<div>
+    
+    <table border="1">
+
+
+        <tr>
+            <th>Customer Id</th>
+            <th>Customer Name</th>
+            <th>Document Id</th>
+            <th>Photo</th>
+            <th>Aadhar Card</th>
+            <th>Pan Card</th>
+            <th>Salary slip</th>
+            <th>Bank Statement</th>
+            <th>Address Proof</th>
+            <th>Verification Status</th>
+            <th>Verify</th>
+        </tr>
+        <tr *ngFor="let d of customerdetail">
+            <td>{{d.customerId}}</td>
+            <td>{{d.customerName}}</td>
+            <td>{{d.customerDocuments.documentId}}</td>
+            <td><img [src]=" 'data:image/jpeg;base64,'+d.customerDocuments.photo" height="100" ></td>
+            <td><img [src]=" 'data:image/jpeg;base64,'+d.customerDocuments.adharCard" height="100" ></td>
+            <td><img [src]=" 'data:image/jpeg;base64,'+d.customerDocuments.panCard" height="100" ></td>
+            <td><img [src]=" 'data:image/jpeg;base64,'+d.customerDocuments.salarySlips" height="100" ></td>
+            <td><img [src]=" 'data:image/jpeg;base64,'+d.customerDocuments.bankStatement" height="100" ></td>
+            <td><img [src]=" 'data:image/jpeg;base64,'+d.customerDocuments.addressProof" height="100" ></td>
+            <td>{{d.customerDocuments.verificationStatus}}</td>
+            <button (click)="Verify(d)">Verify</button>
+        </tr>
+
+    </table>
+
+
+</div>

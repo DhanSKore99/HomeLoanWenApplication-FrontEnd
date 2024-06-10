@@ -1,0 +1,449 @@
+<!-- It will show one registration form 
+crm will fill this registration form only of those verified enquiry.
+submit registration form and sent registration email -->
+<!-- <p>register works!</p> -->
+
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+
+<form [formGroup]="firstFormGroup" >
+  <mat-stepper [linear]="isLinear" #stepper>
+
+    <mat-step [stepControl]="firstFormGroup">
+
+
+      <ng-template matStepLabel>Personal Details</ng-template>
+
+      <mat-form-field>
+        <mat-label>customerName</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="customerName" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>customerDateOfBirth</mat-label>
+        <input matInput placeholder="dd/mm/yyyy" formControlName="customerDateOfBirth" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>customerGender</mat-label>
+        <input matInput placeholder="Gender" formControlName="customerGender" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>maritalStatus</mat-label>
+        <input matInput placeholder="married/unmarried" formControlName="maritalStatus" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>loanAmount</mat-label>
+        <input matInput placeholder="in Rupees" formControlName="loanAmount" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>emailId</mat-label>
+        <input matInput placeholder="xyz@gmail.com" formControlName="emailId" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>mobileNumber</mat-label>
+        <input matInput placeholder="0000000000" formControlName="mobileNumber" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>pancardNumber</mat-label>
+        <input matInput placeholder="pan number" formControlName="pancardNumber" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>adhaarNumber</mat-label>
+        <input matInput placeholder="12 - digits " formControlName="adhaarNumber" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>address</mat-label>
+        <input matInput placeholder="permanent address " formControlName="address" required>
+      </mat-form-field>
+
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+
+    </mat-step>
+    <!-- ================================================================================================================================================================================================================ -->
+
+    <mat-step [stepControl]="firstFormGroup" label="customerBankDetails">
+      <div formGroupName="customerBankDetails" >
+
+
+        <mat-form-field>
+          <mat-label>bankName</mat-label>
+          <input matInput formControlName="bankName" placeholder="Bank Name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>bankAccountNumber</mat-label>
+          <input matInput formControlName="bankAccountNumber" placeholder="Account Number" required>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>ifscCode</mat-label>
+          <input matInput formControlName="ifscCode" placeholder="IFSC" required>
+        </mat-form-field>
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+
+    <!-- ========================================================================================================================================================================================================================================== -->
+
+    <mat-step [stepControl]="firstFormGroup" label="CustomerDocuments">
+      <div >
+        Photo     :<input type="file" (change)="onselectphoto($event)">
+                    <img [src]="photosrc" height="100">
+        <br><br>
+        
+
+        AadharCard:<input type="file" (change)="onselectaadhar($event)">
+        <img [src]="adharsrc" height="100">
+        <br><br>
+     
+
+        PanCard   :<input type="file"(change)="onselectpan($event)">
+        <img [src]="pansrc" height="100">
+        <br><br>
+      
+
+        SalarySlip:<input type="file"(change)="onselecsalaryslip($event)">
+        <img [src]="salarysrc" height="100">
+        <br><br>
+     
+
+        BankStatement:<input type="file"(change)="onselectbankstatement($event)">
+        <img [src]="bankstmtsrc" height="100">
+        <br><br>
+      
+
+        AddressProof:<input type="file"(change)="onselectaddproof($event)">
+        <img [src]="addresssrc" height="100">
+       
+
+
+
+
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+
+
+
+    <!-- ============================================================================================================================================================================================================== -->
+
+
+    <mat-step [stepControl]="firstFormGroup" label="IncomeDetails">
+      <div formGroupName="incomeDetails">
+
+
+        <mat-form-field>
+          <mat-label>profType</mat-label>
+          <input matInput formControlName="profType" placeholder=" employee / business " required>
+        </mat-form-field>
+
+
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+
+
+
+    <!-- ================================================================================================================================ -->
+
+
+    <mat-step [stepControl]="firstFormGroup" label="EmploymentDetails">
+      <div formGroupName="employmentdetails">
+
+
+        <mat-form-field>
+          <mat-label>employerName</mat-label>
+          <input matInput formControlName="employerName" placeholder="Employer Name" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>employerContact</mat-label>
+          <input matInput formControlName="employerContact" placeholder="Employer contact" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>employerEmail</mat-label>
+          <input matInput formControlName="employerEmail" placeholder="Employer email" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>workingFrom</mat-label>
+          <input matInput formControlName="workingFrom" placeholder="Years /  months" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>designation</mat-label>
+          <input matInput formControlName="designation" placeholder="Designation" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>orgType</mat-label>
+          <input matInput formControlName="orgType" placeholder="Private / Government " required>
+        </mat-form-field>
+
+
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+
+    <!-- ================================================================================================================================================================= -->
+
+    <mat-step [stepControl]="firstFormGroup" label="GuarantorDetails">
+      <div formGroupName="guarantorDetails">
+
+
+        <mat-form-field>
+          <mat-label>gurantorName</mat-label>
+          <input matInput formControlName="gurantorName" placeholder="Last Name , First Name" required>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>relation</mat-label>
+          <input matInput formControlName="relation" placeholder="Relation with guarantor" required>
+        </mat-form-field>
+
+
+
+
+        <mat-form-field>
+          <mat-label>mobileNumber</mat-label>
+          <input matInput formControlName="mobileNumber" placeholder="10 - digit " required>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>designation</mat-label>
+          <input matInput formControlName="designation" placeholder="Designation " required>
+        </mat-form-field>
+
+
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+
+
+    <!-- ============================================================================================================================= -->
+
+
+
+    <!-- <mat-step [stepControl]="firstFormGroup" label="CustomerSignUp">
+      <div formGroupName="CustomerSignUp">
+
+
+        <mat-form-field>
+          <mat-label>custUsername</mat-label>
+          <input matInput formControlName="custUsername" placeholder="Username" required>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>custPassword</mat-label>
+          <input matInput formControlName="custPassword" placeholder="password" required>
+        </mat-form-field>
+
+
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step> -->
+
+
+    <!-- =====================================================================================================================================================================     -->
+
+
+<!-- 
+    <mat-step [stepControl]="firstFormGroup" label="EmailSender">
+      <div formGroupName="EmailSender">
+
+
+        <mat-form-field>
+          <mat-label>toEmail</mat-label>
+          <input matInput formControlName="toEmail" placeholder="Receiver Email Address" required>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>fromEmail</mat-label>
+          <input matInput formControlName="fromEmail" placeholder="Sender Email Address" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>subject</mat-label>
+          <input matInput formControlName="subject" placeholder="Subject" required>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>message</mat-label>
+          <input matInput formControlName="message" placeholder="message" required>
+        </mat-form-field>
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step> -->
+
+
+    <!-- ========================================================================================================================================================== -->
+
+
+
+    <mat-step [stepControl]="firstFormGroup" label="PreviousLoanDetails">
+      <div formGroupName="previousLoanDetails">
+
+
+        <mat-form-field>
+          <mat-label>loanAmount</mat-label>
+          <input matInput formControlName="loanAmount" placeholder="in Rupees" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>loanTenure</mat-label>
+          <input matInput formControlName="loanTenure" placeholder="years / months " required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>paidAmount</mat-label>
+          <input matInput formControlName="paidAmount" placeholder="in Rupees" required>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>remainingAmount</mat-label>
+          <input matInput formControlName="remainingAmount" placeholder="in Rupees" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>bankName</mat-label>
+          <input matInput formControlName="bankName" placeholder="Bank Name" required>
+        </mat-form-field>
+
+
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+
+    <!-- =============================================================================================================================================== -->
+
+
+    <mat-step [stepControl]="firstFormGroup" label="PropertyDetails">
+      <div formGroupName="propertyDetails">
+
+
+        <mat-form-field>
+          <mat-label>propertyAddress</mat-label>
+          <input matInput formControlName="propertyAddress" placeholder="Ex. 1 Main St, New York, NY" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>propertyName</mat-label>
+          <input matInput formControlName="propertyName" placeholder="House / Farm / shop " required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>propertyStatus</mat-label>
+          <input matInput formControlName="propertyStatus" placeholder="Property Status" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>propertyAgreementAmount</mat-label>
+          <input matInput formControlName="propertyAgreementAmount" placeholder="in Rupees " required>
+        </mat-form-field>
+
+
+
+      
+      </div>
+
+
+
+      <ng-template matStepLabel>PropertyDetails</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)=registration()>SUBMIT</button>    
+      </div>
+
+    </mat-step>
+
+
+    <!-- ============================================================================================================================================== -->
+
+
+
+
+
+    
+
+
+    
+  </mat-stepper>
+ 
+</form>

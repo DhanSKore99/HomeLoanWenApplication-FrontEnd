@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #0073e6;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2em 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #0073e6;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    color: #005bb5;
+    margin-top: 1.5em;
+}
+
+.about-us p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 1.5em;
+}
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2em;
+}
+
+.team-member {
+    text-align: center;
+    max-width: 200px;
+}
+
+.team-member img {
+    border-radius:80%;
+    width: 100px;
+    height: 100px;
+}
+
+.team-member h4 {
+    margin-top: 0.5em;
+    color: #0073e6;
+}
+
+footer {
+    background-color: #0073e6;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.hero {
+    margin-top: 50px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
